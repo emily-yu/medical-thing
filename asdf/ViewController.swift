@@ -12,7 +12,9 @@ import AVFoundation
 import MobileCoreServices
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+    
+    var imagepickedtbh:UIImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -57,12 +59,37 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
     }
     
+    //same gets image picked
     var imagePicker: UIImagePickerController!
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //get image thing
         print("haeoijfaociweacmwiejcmaowiecmaowiec")
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         imageView.image = chosenImage
         print(chosenImage) //image
+        imagepickedtbh = chosenImage
+//        print(imagepickedtbh)
+        
+        //base64 thing
+        //Use image name from bundle to create NSData
+        //Now use image to create into NSData format
+        let imageData: Data! = UIImageJPEGRepresentation(imagepickedtbh!, 0.1)
+        
+        let base64String = (imageData as NSData).base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        
+        var ref = FIRDatabase.database().reference()
+        var postRef = ref.child("base64string")
+        ref.updateChildValues(["base64string": base64String])
+//        postRef.observe(FIRDataEventType.value, with: { (snapshot) in //this gets the value at current pt
+//            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+//            if let unwrapped = snapshot.value {
+////                print(unwrapped)
+//                ref.updateChildValues(["base64string": unwrapped]) //this shit updates the thing
+//                
+//            }
+//        })
+        
         dismiss(animated: true, completion: nil)
     }
  
