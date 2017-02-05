@@ -9,6 +9,10 @@ import UIKit
 import Foundation
 
 class FirstUIController: UIViewController {
+    
+    let imagePicker = UIImagePickerController()
+    
+    
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
@@ -35,5 +39,22 @@ class FirstUIController: UIViewController {
         super.viewDidLoad()
         var color1 = hexStringToUIColor(hex: "#d9d9d9")
         self.view.backgroundColor = color1
+        
+    }
+    @IBAction func choosePhoto(_ sender: UIButton) {
+        print("same")
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imagepickedtbh = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+        // segue it to the other thing lul
     }
 }

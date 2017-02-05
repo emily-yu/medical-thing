@@ -11,9 +11,11 @@ import Firebase
 import AVFoundation
 import MobileCoreServices
 
+var imagepickedtbh:UIImage!
+
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    var imagepickedtbh:UIImage!
+//    var imagepickedtbh:UIImage!
     
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -171,19 +173,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
         
 }
-    
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-//        picker.dismiss(animated: true, completion: nil)
-//        
-//        //Save image
-//        let img = UIImage()
-//        let data = UIImagePNGRepresentation(img)
-////        NSUserDefaults.standardUserDefaults().setObject(data, forKey: "myImageKey")
-////        NSUserDefaults.standardUserDefaults().synchronize()
-////        NSLog("Image stored?")
-//        print("same")
-//        viewDidLoad()
-//        
+       
     
     }
 
