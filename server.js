@@ -19,19 +19,39 @@ app.post('/projectDetails', function(req, res){
 });
 
 
-scrape("abdominal-wounds");
+var abdominal = scrape("abdominal-wounds");
+var burns = scrape("burns");
+var epidermolysis = scrape("epidermolysis-bullosa");
+var extravasation = scrape("extravasation-wound-images");
+var footUlcer = scrape("foot-ulcers");
+var legUlcer = scrape("leg-ulcer-images")
+var legUlcer2 = scrape("leg-ulcer-images-2");
+var malignant = scrape("malignant-wound-images");
+var meningitis = scrape("meningitis");
+var ortho = scrape("orthopaedic%20wounds");
+var misc = scrape("miscellaneous");
+var pressureUlcer = scrape("pressure-ulcer-images-a");
+var pressureUlcer2 = scrape("pressure-ulcer-images-b")
+var pilonidal = scrape("pilonidal-sinus");
+var toeInfect = scrape("toes");
 
-scrape("burns");
 
-function scrape(same, array){
+function scrape(same){
     var scraper = new Scraper("http://www.medetec.co.uk/slide%20scans/" + same + "/index.html");
-    
-    console.log("Got here");
+    var array = [];
 
     scraper.scrape(function(image) { 
+        console.log(same);
         console.log(image.address);
-        array.push(image.address);
+        image.save()
     });
+
+}
+
+function printArray(same){
+    for(var x=0; x<=same.length; x++){
+        console.log(same[x])
+    }
 }
 
 app.listen(8000)

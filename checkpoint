@@ -1,0 +1,5 @@
+model_checkpoint_path: "/Users/kevin/Documents/Python/facial-detection/training.ckpt-150"
+all_model_checkpoint_paths: "/Users/kevin/Documents/Python/facial-detection/training.ckpt-0"
+all_model_checkpoint_paths: "/Users/kevin/Documents/Python/facial-detection/training.ckpt-50"
+all_model_checkpoint_paths: "/Users/kevin/Documents/Python/facial-detection/training.ckpt-100"
+all_model_checkpoint_paths: "/Users/kevin/Documents/Python/facial-detection/training.ckpt-150"
